@@ -8,6 +8,9 @@ form(role="form", ng-submit="confirm()")
         ng-model="unlock.password", rp-focus)
     p.help-block(ng-switch on="unlock.purpose")
       span(ng-switch-when="showSecret", l10n) Please enter your password to show your secret key.
+        span.input-group.helperInput.call-to-action
+          input(type="checkbox", name="disablePasswordProtection", ng-model="unlock.disablePasswordProtection")
+          label(for="disablePasswordProtection", l10n) Don't ask for password again
       span(ng-switch-default, l10n) Please enter your password to confirm this transaction.
     .alert.alert-danger(ng-show="unlock.error == 'password'", l10n) This password is incorrect, please try again.
     p.literal(ng-show="unlock.isConfirming", rp-spinner="4", l10n) Confirming password

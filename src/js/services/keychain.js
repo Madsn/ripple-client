@@ -75,7 +75,8 @@ module.factory('rpKeychain', ['$rootScope', '$timeout', 'rpPopup', 'rpId',
     var unlock = popupScope.unlock = {
       isConfirming: false,
       password: '',
-      purpose: purpose
+      purpose: purpose,
+      disablePasswordProtection: false
     };
     popupScope.confirm = function () {
       unlock.isConfirming = true;
@@ -88,7 +89,15 @@ module.factory('rpKeychain', ['$rootScope', '$timeout', 'rpPopup', 'rpId',
           unlock.error = "password";
         } else {
           popup.close();
-
+          if (unlock.disablePasswordProtection) {
+            _this.setPasswordProtection(false, function(err, resp){
+              if (err) {
+                // TODO: Show success banner
+              } else {
+                // TODO: Show error banner
+              }
+            });
+          }
           callback(null, secret);
         }
       }
