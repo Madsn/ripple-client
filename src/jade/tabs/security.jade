@@ -1,6 +1,7 @@
 
 
-section.col-xs-12.wide.content(ng-controller="SecurityCtrl")
+div.col-xs-12.wide.content(ng-controller="SecurityCtrl")
+  p.alert-success.banner.text-center(style="margin-top: 20px;", ng-hide="disabledPasswordProtection") Test
   p.important(l10n) Your account is protected digitally through
     |  encryption algorithms that can be unlocked&#32;
     b(l10n-inc) only with your secret key or password

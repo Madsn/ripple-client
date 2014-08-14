@@ -28,6 +28,7 @@ SecurityTab.prototype.angular = function (module) {
     updateEnc();
 
     $scope.security = {};
+    $scope.disabledPasswordProtection = false;
 
     function updateEnc()
     {
@@ -46,7 +47,12 @@ SecurityTab.prototype.angular = function (module) {
      */
 
     $scope.unmaskSecret = function () {
-      keychain.requestSecret($id.account, $id.username, 'showSecret', function (err, secret) {
+      keychain.requestSecret($id.account, $id.username, 'showSecret', function (err, disabledPasswordProtection, secret) {
+        if (disabledPasswordProtection) {
+          $scope.disabledPasswordProtection = true;
+        } else {
+          $scope.disabledPasswordProtection = false;
+        }
         if (err) {
           // XXX Handle error
           return;
