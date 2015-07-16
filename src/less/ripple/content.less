@@ -2,7 +2,7 @@
 
 // Temporary
 @media (max-width: @screen-xs-max) {
-  .t-login, .t-register, .t-migrate {
+  .t-login, .t-tou, .t-privacypolicy {
     header {
       display: none;
     }
@@ -17,8 +17,8 @@ nav + .content {
   .border-radius(5px,5px,0,0);
 
   @media (min-width: @screen-sm-max) {
-    -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: -3px 0 5px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: -3px 0 5px 0 rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -45,12 +45,9 @@ h1 {
 }
 
 .order-warning {
-  color: @midred;
-  font-size: 25px;
-}
-
-.twoFAInfo {
-  margin: 50px auto;
+  color: @state-danger-text;
+  font: 21px 'OpenSansSemibold';
+  font-weight: normal;
 }
 
 .connectModal {
@@ -152,7 +149,7 @@ h1 {
   padding-bottom: @grid-gutter-width/2;
   .rounded(5px);
   min-height: 500px;
-  z-index: 10;
+  //z-index: 10;
 
 
   @media (max-width: @screen-xs-max) {
@@ -194,6 +191,11 @@ h1 {
   p.literal, span.literal, a.literal {
     font: 16px 'OpenSansRegular';
 
+    &.landing {
+      font-size: 14px;
+      color: @landingblue;
+    }
+
     strong {
       font-family: 'OpenSansBold';
       font-weight: normal;
@@ -213,6 +215,7 @@ h1 {
   p.hint {
     font-size: 1em;
     margin-top: 0;
+    color: @landingblue;
   }
 
   p.lit-small {
@@ -221,7 +224,7 @@ h1 {
 
   .throbber {
     min-height: 24px;
-    background-image: url(../../img/throbber.gif);
+    background-image: url(/img/throbber.gif);
     background-repeat: no-repeat;
     padding-left: 24px + 10px;
   }
@@ -322,10 +325,15 @@ h1 {
 // Tooltip
 .tooltip {
   opacity: 1 !important;
+  min-width: 150px;
+
+  &.bottom .tooltip-arrow {
+    border-bottom-color: @midgray;
+  }
 
   .tooltip-inner {
     background: @white;
-    border: 1px solid @lightgray;
+    border: 1px solid @midgray;
     .border-radius(3px,3px,3px,3px);
     color: @darkgray;
     padding: 8px 15px;
@@ -347,6 +355,10 @@ h1 {
     font: 16px OpenSansRegular;
   }
 
+  &.top .arrow:after {
+    border-top-color: @lightgray;
+  }
+
   &.bottom .arrow:after {
     border-bottom-color: @lightgray;
   }
@@ -362,6 +374,18 @@ h1 {
   }
 }
 
+.nav {
+  .popover {
+  width: 200px;
+  padding: 0;
+
+  .popover-content {
+    font-size: 12px;
+    line-height: 16px;
+    }
+  }
+}
+
 // Pagination
 .pagination li {
   cursor: pointer;
@@ -372,7 +396,11 @@ h1 {
 }
 
 .insig {
+  color: @midgray;
+}
+.decimalPart {
   color: @darkgray;
+  font-size: 0.8em;
 }
 a.danger {
   color: @midred;
@@ -417,7 +445,30 @@ a.danger {
 .ripple-addon {
   font-size: 18px;
 }
-
+.alert {
+  position: relative;
+  .tx-status {
+    font: 12px 'OpenSansRegular';
+    font-weight: normal;
+    margin: 0;
+    text-align: left;
+  }
+  .dismiss {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    font-family: "Helvetica Neue Bold";
+    font-size: 21px;
+    font-weight: bold;
+    color: @black;
+    text-decoration: none;
+    opacity: 0.2;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
 .auth-attention {
   margin-bottom: 20px;
   font-size: 13px;
@@ -438,7 +489,61 @@ a.danger {
   }
   .rounded(5px);
   a{
-    text-decoration: underline; 
+    text-decoration: underline;
+    &#hide {
+      margin-top: -8px;
+      display: inline-block;
+      font-size: 21px;
+      text-decoration: none;
+      color: #000;
+      opacity: 0.2;
+      font-family: "Helvetica Neue Bold";
+      font-weight: bold;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  ul {
+    margin-bottom: 0;
+    padding-left: 18px;
+  }
+  span {
+    font-family: OpenSansBold;
+  }
+  #announcement {
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: -5px;
+    padding-left: 5px;
+    width: 90%;
+  }
+}
+
+.warning-attention {
+  margin-bottom: 20px;
+  font-size: 13px;
+  background: @notification-error-background;
+  color: @notification-error-text;
+  border: 1px solid @notification-info-border;
+  padding: 15px;
+  h4 {
+    display: inline-block;
+    margin-top: 0;
+  }
+  .close {
+    display: inline-block;
+    font-size: 21px;
+    margin-top: -5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  }
+  .rounded(5px);
+  a{
+    text-decoration: underline;
     &#hide {
       margin-top: -8px;
       display: inline-block;
@@ -478,13 +583,13 @@ a.danger {
 
 rp-pie-chart {
   text {
-    font-family: OpenSansLight, sans-serif;
+    font: 17px OpenSansLight, sans-serif;
     pointer-events: none;
   }
-  
+
   text.percentage {
+    font-size: 15px;
     fill: @darkgray;
-    font-size: 12px;
   }
 
   .main {
@@ -494,7 +599,7 @@ rp-pie-chart {
   .sub {
     opacity: 0;
   }
-  
+
   .hole {
     fill: @white;
     stroke: @white;
@@ -506,8 +611,8 @@ rp-pie-chart {
     -o-transition     : opacity 0.17s;
     transition        : opacity 0.17s;
   }
-  
-  
+
+
   .main.xrp {
     fill: @color-xrp;
     stroke: @color-xrp;
@@ -516,7 +621,7 @@ rp-pie-chart {
     fill: darken(@color-xrp, 20%);
     stroke: darken(@color-xrp, 20%);
   }
-  
+
   .main.usd {
     fill: @color-usd;
     stroke: @color-usd;
@@ -531,7 +636,7 @@ rp-pie-chart {
       stroke: lighten(@color-usd, 20%);
     }
   }
-  
+
   .main.btc {
     fill: @color-btc;
     stroke: @color-btc;
@@ -546,7 +651,7 @@ rp-pie-chart {
       stroke: lighten(@color-btc, 20%);
     }
   }
-  
+
   .main.eur {
     fill: @color-eur;
     stroke: @color-eur;
@@ -561,7 +666,7 @@ rp-pie-chart {
       stroke: lighten(@color-eur, 20%);
     }
   }
-  
+
   .main.cny {
     fill: @color-cny;
     stroke: @color-cny;
@@ -576,7 +681,7 @@ rp-pie-chart {
       stroke: lighten(@color-cny, 20%);
     }
   }
-  
+
   .main.jpy {
     fill: @color-jpy;
     stroke: @color-jpy;
@@ -591,7 +696,7 @@ rp-pie-chart {
       stroke: lighten(@color-jpy, 20%);
     }
   }
-  
+
   .main.cad {
     fill: @color-cad;
     stroke: @color-cad;
@@ -606,8 +711,8 @@ rp-pie-chart {
       stroke: lighten(@color-cad, 20%);
     }
   }
-  
-  
+
+
   .main.generic1 {
     fill: @color-generic1;
     stroke: @color-generic1;
@@ -622,7 +727,7 @@ rp-pie-chart {
       stroke: lighten(@color-generic1, 20%);
     }
   }
-  
+
   .main.generic2 {
     fill: @color-generic2;
     stroke: @color-generic2;
@@ -637,8 +742,8 @@ rp-pie-chart {
       stroke: lighten(@color-generic2, 20%);
     }
   }
-  
-  
+
+
   .main.other {
     fill: @color-other;
     stroke: @color-other;

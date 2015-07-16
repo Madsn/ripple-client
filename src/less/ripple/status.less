@@ -19,7 +19,7 @@
 
     a {
       display: block;
-      margin: 20px 0px;
+      margin: 20px 0;
       cursor: pointer;
       color: @black;
     }
@@ -89,7 +89,7 @@
       display: none;
     }
 
-    li.negative {
+    .negative {
       color: @midred;
     }
 
@@ -209,7 +209,7 @@
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     transition-duration: 0.2s;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 
     &.active {
       top: 40px;
@@ -281,7 +281,6 @@
       padding-left: 10%;
       padding-right: 10%;
       font-size: 20px;
-      font-family: OpenSansRegular;
       line-height: 30px;
       opacity: 0;
       .rounded(5px);
@@ -308,7 +307,7 @@
   right: 10px;
   width: 24px;
   height: 24px;
-  background-image: url('../../img/options.png');
+  background-image: url('/img/options.png');
   span {
     display: none;
   }

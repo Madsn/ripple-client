@@ -5,8 +5,9 @@ js/.DS_Store
 npm-debug.log
 .DS_Store
 node_modules
+test/sauce/node_modules/
 build/
-src/js/config.js
+config.js
 test/e2e/protractor.conf.js
 analytics.js
 res/nw/config.js
@@ -14,6 +15,7 @@ deps/js/ripple/
 deps/js/angular/
 deps/js/angular-route/
 deps/js/angular-mocks/
+deps/js/angular-messages/
 deps/js/jquery/
 deps/js/moment/
 deps/js/spin.js/
@@ -21,4 +23,9 @@ deps/js/store.js/
 deps/js/underscore/
 deps/js/snapjs/
 deps/js/angular-bootstrap/
-deps/js/qrcode-generator/
+deps/js/ripple-vault-client
+deps/js/ng-sortable/
+deps/js/d3/
+
+# Ignore coverage files
+/coverage
